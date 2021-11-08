@@ -25,7 +25,7 @@ pipelines:
           image: aljandor/shellcheck-docker:latest
           script:
             - shellcheck -V
-            - find ./scripts -type f -name "*.sh" | sort -u | xargs shellcheck -e SC2034
+            - find ./scripts -type f -name "*.sh" | sort -u | xargs shellcheck -e SC2034 --color=always
 ```
 
 ### 4. Example usage in GitLab CI
@@ -39,7 +39,7 @@ shellcheck:
   before_script:
     - shellcheck -V
   script:
-    - find ./scripts -type f -name "*.sh" | sort -u | xargs shellcheck -e SC2034
+    - find ./scripts -type f -name "*.sh" | sort -u | xargs shellcheck -e SC2034 --color=always
   tags:
     - docker
 ```    
