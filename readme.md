@@ -44,6 +44,25 @@ shellcheck:
     - docker
 ```    
 
+### 5. Example usage in GitHub Actions
+```yaml
+name: Run Shellcheck linter
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  update_docker_hub_metadata:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run Shellcheck linter
+        uses: aljandor/shellcheck-docker:latest
+        with:
+            cli-args: "--color=always ./scripts"
+```        
+
 ## CI/CD to Dockerhub
 https://hub.docker.com/repository/docker/aljandor/shellcheck-docker
 
@@ -51,4 +70,3 @@ Dockerhub is integrated with the repository, it automatically starts the build i
 
 ## TODO
 - tags for shellcheck version
-- GitHub usage
