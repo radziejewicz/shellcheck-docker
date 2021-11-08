@@ -51,3 +51,4 @@ Dockerhub is integrated with the repository, it automatically starts the build i
 
 ## TODO
 - tags for shellcheck version
+- GitHub usage
