@@ -64,7 +64,8 @@ jobs:
 ```        
 
 ## CI/CD to Dockerhub
-https://hub.docker.com/repository/docker/aljandor/shellcheck-docker
+
+https://hub.docker.com/r/aljandor/shellcheck-docker
 
 Dockerhub is integrated with the repository, it automatically starts the build image from the master branch: `aljandor/shellcheck-docker:latest`
 
