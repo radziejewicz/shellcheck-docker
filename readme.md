@@ -14,7 +14,6 @@ docker build --rm -t aljandor/shellcheck-docker:latest .
 docker run --rm -it -v `pwd`:/scripts shl shellcheck /scripts/script.sh
 ```
 
-
 ### 3. Example usage in bitbucket-pipelines.yml
 
 ```yaml
@@ -25,11 +24,30 @@ pipelines:
           name: Run Shellcheck linter
           image: aljandor/shellcheck-docker:latest
           script:
-            - shellcheck --version
+            - shellcheck -V
             - find ./scripts -type f -name "*.sh" | sort -u | xargs shellcheck -e SC2034
 ```
+
+### 4. Example usage in GitLab CI
+```yaml
+shellcheck:
+  stage: test
+  image: aljandor/shellcheck-docker:latest
+  only:
+    changes:
+      - "**/*.bash"
+  before_script:
+    - shellcheck -V
+  script:
+    - find ./scripts -type f -name "*.sh" | sort -u | xargs shellcheck -e SC2034
+  tags:
+    - docker
+```    
 
 ## CI/CD to Dockerhub
 https://hub.docker.com/repository/docker/aljandor/shellcheck-docker
 
 Dockerhub is integrated with the repository, it automatically starts the build image from the master branch: `aljandor/shellcheck-docker:latest`
+
+## TODO
+- tags for shellcheck version
