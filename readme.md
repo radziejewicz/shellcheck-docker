@@ -53,7 +53,7 @@ on:
     branches: [ master ]
 
 jobs:
-  update_docker_hub_metadata:
+  run_shellcheck_linter:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -61,7 +61,7 @@ jobs:
         uses: aljandor/shellcheck-docker:latest
         with:
             cli-args: "--color=always ./scripts"
-```        
+```
 
 ## CI/CD to Dockerhub
 
