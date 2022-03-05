@@ -63,6 +63,26 @@ jobs:
             cli-args: "--color=always ./scripts"
 ```
 
+### 6. Example usage in Drone CI
+
+```yaml
+---
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: Run Shellcheck linter
+  image: aljandor/shellcheck-docker:latest
+  commands:
+  - shellcheck --version
+  - find . -type f -name "*.sh" | sort -u | xargs shellcheck -e SC2034 -e SC1090 --color=always
+
+trigger:
+  event:
+  - push
+``` 
+
 ## CI/CD to Dockerhub
 
 https://hub.docker.com/r/aljandor/shellcheck-docker
